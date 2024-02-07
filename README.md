@@ -23,6 +23,6 @@ A simple password generator tool with a graphical user interface (GUI) written i
     b.Enter the website name and username for which the password is generated.    
     c.Check or uncheck the checkboxes to include or exclude character sets (uppercase letters, lowercase letters, digits, special characters).  
     d.Click the "Generate Password" button to generate a password based on the selected options.  
-    e.The generated password will saved to a Passwords.txt file in the same directory.  
+    e.The generated password will saved to a Passwords.txt file in the same directory.    
 **Close the GUI:**  
    You can close the GUI window by clicking the close button (usually an 'X' icon) in the window's title bar.
