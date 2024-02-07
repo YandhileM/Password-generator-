@@ -2,6 +2,7 @@ import random
 import string
 import tkinter as tk
 from tkinter import messagebox
+import pyperclip 
 
 #function to generate a random password
 def generate_password(sizeOfPassword=12, uppercase=True,lowercase=True, digits=True, special=True):
@@ -34,6 +35,10 @@ def generate_password_click():
     if password:
         password_display_label.config(text="Generated password: " +password)
 
+def copy_to_clipboard():
+    password = password_display_label.cget("text")
+    pyperclip.copy(password)
+    messagebox.showinfo("success", "Password copied")
 #GUI
 root = tk.Tk()
 root.title("Password Generator")
@@ -68,6 +73,10 @@ special_check.pack()
 #Generate Password button
 generate_button = tk.Button(root, text = "Generate Password", command = generate_password_click)
 generate_button.pack(pady=10)
+
+#Copy button
+copy_button = tk.Button(root, text = "Copy Password", command=copy_to_clipboard)
+copy_button.pack(pady=5)
 
 #Display password
 password_display_label = tk.Label(root, text = "")
