@@ -14,18 +14,17 @@ A simple password generator tool with a graphical user interface (GUI) written i
 3. **Navigate to the Directory you saved the repository in:**  
    ```bash
    cd password-generator
-5. **Run the script:**    
+4. **Run the script:**    
    ```bash
    python3 password_generator_gui.py
-7. **Graphical User Interface (GUI):**   
+4. **Graphical User Interface (GUI):**   
 
     a.Enter the desired length for your password in the provided entry field.  
     b.Check or uncheck the checkboxes to include or exclude character sets (uppercase letters, lowercase letters, digits, special characters).  
     c.Click the "Generate Password" button to generate a password based on the selected options.  
     d.The generated password will be displayed in the window.  
+5. **Copy Password to Clipboard:**  
+   Click the "Copy Password" button to copy the generated password to the clipboard for easy usage in other applications or websites.
 
-8. **Close the GUI:**  
-  You can close the GUI window by clicking the close button (usually an 'X' icon) in the window's title bar.
-
-
-
+**Close the GUI:**  
+   You can close the GUI window by clicking the close button (usually an 'X' icon) in the window's title bar.
