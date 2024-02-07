@@ -1,8 +1,9 @@
 import random
 import string
 import tkinter as tk
-from tkinter import messagebox
-import pyperclip 
+from tkinter import messagebox, filedialog
+
+DEFAULT_FILE_PATH = "passwords.txt"
 
 #function to generate a random password
 def generate_password(sizeOfPassword=12, uppercase=True,lowercase=True, digits=True, special=True):
@@ -34,11 +35,17 @@ def generate_password_click():
     password = generate_password(sizeOfPassword, uppercase, lowercase, digits, special)
     if password:
         password_display_label.config(text="Generated password: " +password)
+        website = website_entry.get()
+        username = username_entry.get()
+        if website and username:
+            save_password_to_file(website, username, password)
 
-def copy_to_clipboard():
-    password = password_display_label.cget("text")
-    pyperclip.copy(password)
-    messagebox.showinfo("success", "Password copied")
+#Function to save generated passsword to file
+def save_password_to_file(website, username, password):
+    with open(DEFAULT_FILE_PATH, "a") as file:
+        file.write(f"Website: {website}\nUsername: {username}\nPassword: {password}\n\n")
+    messagebox.showinfo("Success", "Password saved to file!")
+
 #GUI
 root = tk.Tk()
 root.title("Password Generator")
@@ -48,6 +55,20 @@ sizeOfPassword_label.pack(pady=5)
 
 size_entry = tk.Entry(root)
 size_entry.pack(pady=5)
+
+#website
+website_label = tk.Label(root, text = "Enter website name")
+website_label.pack(pady=5)
+
+website_entry = tk.Entry(root)
+website_entry.pack(pady=5)
+
+#Username
+username_label = tk.Label(root, text="Enter username:")
+username_label.pack(pady=5)
+
+username_entry = tk.Entry(root)
+username_entry.pack(pady=5)
 
 #checkbox to include
 uppercase_var = tk.BooleanVar()
@@ -74,9 +95,7 @@ special_check.pack()
 generate_button = tk.Button(root, text = "Generate Password", command = generate_password_click)
 generate_button.pack(pady=10)
 
-#Copy button
-copy_button = tk.Button(root, text = "Copy Password", command=copy_to_clipboard)
-copy_button.pack(pady=5)
+
 
 #Display password
 password_display_label = tk.Label(root, text = "")
